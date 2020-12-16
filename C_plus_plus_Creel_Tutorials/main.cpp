@@ -1017,7 +1017,7 @@ int main() {
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-//Tutorial 17 - new and delete, the stack and the heap
+//Tutorial 17: new and delete, the stack and the heap
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 /*
 #include<iostream>
@@ -1065,7 +1065,7 @@ int main() {
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-//Tutorial 18 - Function overloading
+//Tutorial 18: Function overloading
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 /*
 #include<iostream>
@@ -1120,17 +1120,129 @@ int main() {
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 
 /*
-
+If a class object is initialized first the constructor of the class is called. If no constructor is specified C++ automatically uses the default constructor
+If a variable is created on the heap the destructor is not called outomatically as soon as it falls out of scope. It has to be called by the delete method to reallocate the space on the RAM
+RAM = random access memory
+If a class function is defined within the class declaration it is called inlining the function. This can be useful if the function body is short
 */
 
 #include<iostream>
 #include<cmath>
+#include <ctime>                  //ctime for reading the time from the motherboard
+#define _CRTDBG_MAP_ALLOC         //Used for checking for memory leaks
+#include <stdlib.h>               //stdlib.h for the random funtion that uses the time to seed a random number and for checking for memory leaks
+#include <crtdbg.h>               //Used for checking for memory leaks
 
 using namespace std;
 
+
+int getRand(int max) {            //Function to produce a random number between 0 and max based on the PC time
+	srand(time(NULL));
+	return rand() % (max + 1);
+}
+
+
+class Bird {
+public:
+	Bird();               //Declaration of constructor
+	Bird(int a);          //Constructors can be overloaded same as other functions
+	Bird(float b);        //This can be used to intitialize class objects depending on the parameters passed to the constructor
+	~Bird();
+};
+
+Bird::Bird() {
+	//Empty constructor definition (This is equivalent to the default constructor that is automatically called if no other constructor is defined) 
+}
+
+Bird::Bird(int a) {
+	//Empty constructor definition but this time an integer value is passed
+}
+
+Bird::Bird(float b) {
+	//Empty constructor definition but this time a float value is passed
+}
+
+Bird::~Bird() {
+	//cout << "Destructor is called" << endl;                                           //Destructor (usually empty), reallocates RAM space if object is destroyed or falls out of scope 
+																						//(e.g. created within function but not returned)
+	//cerr << "Destructor called for " << __FUNCTION__ << " at " << &(*this) << endl;   //Displays object name and RAM location of destroyed object
+}
+
+
+class Person {            //person class for first challenge (12:20)
+public:
+	Person();
+	Person(int, float, float);
+	~Person();
+	int dispAge();
+	float dispH();        //can't write float dishh(), dispw(); because these aren't variables but function declarations
+	float dispW();
+private:
+	int age;
+	float height, weight; //here the variable declarations can be written in one line
+};
+
+Person::Person() {
+
+}
+
+Person::Person(int a, float h, float w) { //constructor for person class (challenge 1), could also assigne random values directly here, but this way i can also pass concrete values
+	Person::age = a;
+	Person::height = h;
+	Person::weight = w;
+}
+
+Person::~Person() {
+	//cerr << "destructor called for " << __function__ << " at " << &(*this) << endl;
+}
+
+// member functions of person class for displaying the private variables age, height and weight
+int Person::dispAge() { 
+	return Person::age;
+}
+float Person::dispH() {
+	return Person::height;
+}
+float Person::dispW() {
+	return Person::weight;
+}
+
+
 int main() {
+	//This part is used for the first part of the tutorial up to the challenges
+	Bird c;                   //This will initialize an object of the class Bird called c using the default constructor, since no argument was passed
+	Bird d(100);              //This will initialize an object of the class Bird called d using the constructor that takes an integer value as argument
+	Bird e(5.5f);             //This will initialize an object of the class Bird called e using the constructor that takes a float value as argument. Float has to be specified using the f
+
+	//Often the new command is used to create class objects on the heap. As always in this case it is very important to delete the objects afterwards to deallocate the part of the RAM
+	Bird* birds = new Bird[100];  //An array of birds is created on the heap and the constructor for each of these objects is called
+	delete[] birds;               //Since birds is an array the [] after delete are necessary
+
+
+	//This part is used for challenge 1 (Create a person class with int age, float height and float weight)
+	Person Tim(27, 1.86, 78.0);
+	cout << "Tim is " << Tim.dispAge() << " years old." << endl;    //It's important to use "" for strings and '' for single chars in C++. Different than in python
+	cout << "Tim is " << Tim.dispH() << " meters tall." << endl;
+	cout << "Tim weighs " << Tim.dispW() << " kilos." << endl << endl;
+
+	Person Rando(14+getRand(70), 1.5 + float(getRand(5) / 10.0), float(50+getRand(50)));  //Here random values are passed to define age, height and weight
+	cout << "Rando is " << Rando.dispAge() << " years old." << endl; 
+	cout << "Rando is " << Rando.dispH() << " meters tall." << endl;
+	cout << "Rando weighs " << Rando.dispW() << " kilos." << endl << endl;
+
+	//Challenges 2 (Create House class with Persons) and 3 (Create Town class with Houses) are left out, since the House class somehow caused memory leaks
+
+	_CrtDumpMemoryLeaks(); //Checking for memory leaks
 
 	return 0;
 }
+
+//------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+//Tutorial 20: 
+//------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------
