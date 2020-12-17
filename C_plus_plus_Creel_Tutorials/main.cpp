@@ -29,7 +29,9 @@
 * 16 - Classes and objects
 * 17 - New and delete, the stack and the heap
 * 18 - Function overloading
-* 19 - 
+* 19 - Constructors & Destructors
+* 20 - Inheritance basics
+* 21 - Polymorphism
 
 To run a certain program the "slash star  star slash"-commands have to be removed for the section where they don't surround a comment. 
 */
@@ -37,6 +39,7 @@ To run a certain program the "slash star  star slash"-commands have to be remove
 
 
 
+//------------------------------------------------------------------------------------------------------------------------------------------------------
 //Tutorial 1_1: Hello world
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 /*
@@ -52,6 +55,7 @@ int main() {                          //main function without any input which is
 */
 
 
+//------------------------------------------------------------------------------------------------------------------------------------------------------
 //Tutorial 1_2: Functions, cin, cout
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 /*
@@ -74,6 +78,7 @@ int main(){
  If a variable is declared it's type also has to be declared as for instance int a=5; char b='a'; float c=5.5; string d='Hi there';...*/
  /*Comments that
  span over multiple lines can be written like that*/
+//If multiple lines of code should be commented out the lines can be selected and CTRL+K+C will put // in front of all of them. CTRL+K+U will reverse it
 /*
 cout << "Geben Sie a und b ein." << endl;
 cout << "a=" << endl;
@@ -91,6 +96,7 @@ return 0;                       //standard "everything went according to plan"-o
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
+//------------------------------------------------------------------------------------------------------------------------------------------------------
 //Tutorial 2: Test if, else if, else
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 /*
@@ -131,6 +137,7 @@ else {                                                          //If conditions 
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
+//------------------------------------------------------------------------------------------------------------------------------------------------------
 //Tutorial 3: Calculator, If, else, if else, and, or
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 /*
@@ -209,6 +216,7 @@ everything else is seen as True
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
+//------------------------------------------------------------------------------------------------------------------------------------------------------
 //Tutorial 4: Incrementing and decrementing
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 /*
@@ -266,6 +274,7 @@ int main() {
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
+//------------------------------------------------------------------------------------------------------------------------------------------------------
 //Tutorial 5: Control structures
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 /*
@@ -304,6 +313,7 @@ int main() { //Task from tutorial: cout the first 6 powers of 7, tasks 1-100 and
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
+//------------------------------------------------------------------------------------------------------------------------------------------------------
 //Tutorial 6: For loops
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 /*
@@ -407,6 +417,7 @@ int main() {
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
+//------------------------------------------------------------------------------------------------------------------------------------------------------
 //Tutorial 7: Functions
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 /*
@@ -478,6 +489,7 @@ int main() {
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
+//------------------------------------------------------------------------------------------------------------------------------------------------------
 //Tutorial 8: Switch Statements
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 /*
@@ -538,6 +550,7 @@ int main() {
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
+//------------------------------------------------------------------------------------------------------------------------------------------------------
 //Tutorial 9: Arrays
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 /*
@@ -594,6 +607,7 @@ int main() {
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
+//------------------------------------------------------------------------------------------------------------------------------------------------------
 //Tutorial 10: Pointers
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 /*
@@ -627,6 +641,7 @@ int main() {
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
+//------------------------------------------------------------------------------------------------------------------------------------------------------
 //Tutorial 11: Game Programming / Tutorial 12: Headers
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 /*
@@ -673,6 +688,7 @@ int main() {
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
+//------------------------------------------------------------------------------------------------------------------------------------------------------
 //Tutorial 13: Passing by reference vs. by pointer
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 /*
@@ -714,6 +730,7 @@ int main() {
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
+//------------------------------------------------------------------------------------------------------------------------------------------------------
 //Tutorial 14: 2D Arrays
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 /*
@@ -759,6 +776,7 @@ int main() {
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
+//------------------------------------------------------------------------------------------------------------------------------------------------------
 //Tutorial 15: Structures explained (Game Programming)
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 /*
@@ -919,6 +937,7 @@ int main() {
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
+//------------------------------------------------------------------------------------------------------------------------------------------------------
 //Tutorial 16: Classes and objects
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 /*
@@ -1017,6 +1036,7 @@ int main() {
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
+//------------------------------------------------------------------------------------------------------------------------------------------------------
 //Tutorial 17: new and delete, the stack and the heap
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 /*
@@ -1065,6 +1085,7 @@ int main() {
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
+//------------------------------------------------------------------------------------------------------------------------------------------------------
 //Tutorial 18: Function overloading
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 /*
@@ -1116,131 +1137,209 @@ int main() {
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
+//------------------------------------------------------------------------------------------------------------------------------------------------------
 //Tutorial 19: Constructors and Destructors 
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 
-/*
-If a class object is initialized first the constructor of the class is called. If no constructor is specified C++ automatically uses the default constructor
-If a variable is created on the heap the destructor is not called outomatically as soon as it falls out of scope. It has to be called by the delete method to reallocate the space on the RAM
-RAM = random access memory
-If a class function is defined within the class declaration it is called inlining the function. This can be useful if the function body is short
-*/
-
-#include<iostream>
-#include<cmath>
-#include <ctime>                  //ctime for reading the time from the motherboard
-#define _CRTDBG_MAP_ALLOC         //Used for checking for memory leaks
-#include <stdlib.h>               //stdlib.h for the random funtion that uses the time to seed a random number and for checking for memory leaks
-#include <crtdbg.h>               //Used for checking for memory leaks
-
-using namespace std;
-
-
-int getRand(int max) {            //Function to produce a random number between 0 and max based on the PC time
-	srand(time(NULL));
-	return rand() % (max + 1);
-}
-
-
-class Bird {
-public:
-	Bird();               //Declaration of constructor
-	Bird(int a);          //Constructors can be overloaded same as other functions
-	Bird(float b);        //This can be used to intitialize class objects depending on the parameters passed to the constructor
-	~Bird();
-};
-
-Bird::Bird() {
-	//Empty constructor definition (This is equivalent to the default constructor that is automatically called if no other constructor is defined) 
-}
-
-Bird::Bird(int a) {
-	//Empty constructor definition but this time an integer value is passed
-}
-
-Bird::Bird(float b) {
-	//Empty constructor definition but this time a float value is passed
-}
-
-Bird::~Bird() {
-	//cout << "Destructor is called" << endl;                                           //Destructor (usually empty), reallocates RAM space if object is destroyed or falls out of scope 
-																						//(e.g. created within function but not returned)
-	//cerr << "Destructor called for " << __FUNCTION__ << " at " << &(*this) << endl;   //Displays object name and RAM location of destroyed object
-}
-
-
-class Person {            //person class for first challenge (12:20)
-public:
-	Person();
-	Person(int, float, float);
-	~Person();
-	int dispAge();
-	float dispH();        //can't write float dishh(), dispw(); because these aren't variables but function declarations
-	float dispW();
-private:
-	int age;
-	float height, weight; //here the variable declarations can be written in one line
-};
-
-Person::Person() {
-
-}
-
-Person::Person(int a, float h, float w) { //constructor for person class (challenge 1), could also assigne random values directly here, but this way i can also pass concrete values
-	Person::age = a;
-	Person::height = h;
-	Person::weight = w;
-}
-
-Person::~Person() {
-	//cerr << "destructor called for " << __function__ << " at " << &(*this) << endl;
-}
-
-// member functions of person class for displaying the private variables age, height and weight
-int Person::dispAge() { 
-	return Person::age;
-}
-float Person::dispH() {
-	return Person::height;
-}
-float Person::dispW() {
-	return Person::weight;
-}
-
-
-int main() {
-	//This part is used for the first part of the tutorial up to the challenges
-	Bird c;                   //This will initialize an object of the class Bird called c using the default constructor, since no argument was passed
-	Bird d(100);              //This will initialize an object of the class Bird called d using the constructor that takes an integer value as argument
-	Bird e(5.5f);             //This will initialize an object of the class Bird called e using the constructor that takes a float value as argument. Float has to be specified using the f
-
-	//Often the new command is used to create class objects on the heap. As always in this case it is very important to delete the objects afterwards to deallocate the part of the RAM
-	Bird* birds = new Bird[100];  //An array of birds is created on the heap and the constructor for each of these objects is called
-	delete[] birds;               //Since birds is an array the [] after delete are necessary
-
-
-	//This part is used for challenge 1 (Create a person class with int age, float height and float weight)
-	Person Tim(27, 1.86, 78.0);
-	cout << "Tim is " << Tim.dispAge() << " years old." << endl;    //It's important to use "" for strings and '' for single chars in C++. Different than in python
-	cout << "Tim is " << Tim.dispH() << " meters tall." << endl;
-	cout << "Tim weighs " << Tim.dispW() << " kilos." << endl << endl;
-
-	Person Rando(14+getRand(70), 1.5 + float(getRand(5) / 10.0), float(50+getRand(50)));  //Here random values are passed to define age, height and weight
-	cout << "Rando is " << Rando.dispAge() << " years old." << endl; 
-	cout << "Rando is " << Rando.dispH() << " meters tall." << endl;
-	cout << "Rando weighs " << Rando.dispW() << " kilos." << endl << endl;
-
-	//Challenges 2 (Create House class with Persons) and 3 (Create Town class with Houses) are left out, since the House class somehow caused memory leaks
-
-	_CrtDumpMemoryLeaks(); //Checking for memory leaks
-
-	return 0;
-}
+///*
+//If a class object is initialized first the constructor of the class is called. If no constructor is specified C++ automatically uses the default constructor
+//If a variable is created on the heap the destructor is not called outomatically as soon as it falls out of scope. It has to be called by the delete method to reallocate the space on the RAM
+//RAM = random access memory
+//If a class function is defined within the class declaration it is called inlining the function. This can be useful if the function body is short
+//*/
+//
+//#include<iostream>
+//#include<cmath>
+//#include <ctime>                  //ctime for reading the time from the motherboard
+//#define _CRTDBG_MAP_ALLOC         //Used for checking for memory leaks
+//#include <stdlib.h>               //stdlib.h for the random funtion that uses the time to seed a random number and for checking for memory leaks
+//#include <crtdbg.h>               //Used for checking for memory leaks
+//
+//using namespace std;
+//
+//
+//int getRand(int max) {            //Function to produce a random number between 0 and max based on the PC time
+//	srand(time(NULL));
+//	return rand() % (max + 1);
+//}
+//
+//
+//class Bird {
+//public:
+//	Bird();               //Declaration of constructor
+//	Bird(int a);          //Constructors can be overloaded same as other functions
+//	Bird(float b);        //This can be used to intitialize class objects depending on the parameters passed to the constructor
+//	~Bird();
+//};
+//
+//Bird::Bird() {
+//	//Empty constructor definition (This is equivalent to the default constructor that is automatically called if no other constructor is defined) 
+//}
+//
+//Bird::Bird(int a) {
+//	//Empty constructor definition but this time an integer value is passed
+//}
+//
+//Bird::Bird(float b) {
+//	//Empty constructor definition but this time a float value is passed
+//}
+//
+//Bird::~Bird() {
+//	//cout << "Destructor is called" << endl;                                           //Destructor (usually empty), reallocates RAM space if object is destroyed or falls out of scope 
+//																						//(e.g. created within function but not returned)
+//	//cerr << "Destructor called for " << __FUNCTION__ << " at " << &(*this) << endl;   //Displays object name and RAM location of destroyed object
+//}
+//
+//
+//class Person {            //person class for first challenge (12:20)
+//public:
+//	Person();
+//	Person(int, float, float);
+//	~Person();
+//	int dispAge();
+//	float dispH();        //can't write float dishh(), dispw(); because these aren't variables but function declarations
+//	float dispW();
+//private:
+//	int age;
+//	float height, weight; //here the variable declarations can be written in one line
+//};
+//
+//Person::Person() {
+//
+//}
+//
+//Person::Person(int a, float h, float w) { //constructor for person class (challenge 1), could also assigne random values directly here, but this way i can also pass concrete values
+//	Person::age = a;
+//	Person::height = h;
+//	Person::weight = w;
+//}
+//
+//Person::~Person() {
+//	//cerr << "destructor called for " << __function__ << " at " << &(*this) << endl;
+//}
+//
+//// member functions of person class for displaying the private variables age, height and weight
+//int Person::dispAge() { 
+//	return Person::age;
+//}
+//float Person::dispH() {
+//	return Person::height;
+//}
+//float Person::dispW() {
+//	return Person::weight;
+//}
+//
+//
+//int main() {
+//	//This part is used for the first part of the tutorial up to the challenges
+//	Bird c;                   //This will initialize an object of the class Bird called c using the default constructor, since no argument was passed
+//	Bird d(100);              //This will initialize an object of the class Bird called d using the constructor that takes an integer value as argument
+//	Bird e(5.5f);             //This will initialize an object of the class Bird called e using the constructor that takes a float value as argument. Float has to be specified using the f
+//
+//	//Often the new command is used to create class objects on the heap. As always in this case it is very important to delete the objects afterwards to deallocate the part of the RAM
+//	Bird* birds = new Bird[100];  //An array of birds is created on the heap and the constructor for each of these objects is called
+//	delete[] birds;               //Since birds is an array the [] after delete are necessary
+//
+//
+//	//This part is used for challenge 1 (Create a person class with int age, float height and float weight)
+//	Person Tim(27, 1.86, 78.0);
+//	cout << "Tim is " << Tim.dispAge() << " years old." << endl;    //It's important to use "" for strings and '' for single chars in C++. Different than in python
+//	cout << "Tim is " << Tim.dispH() << " meters tall." << endl;
+//	cout << "Tim weighs " << Tim.dispW() << " kilos." << endl << endl;
+//
+//	Person Rando(14+getRand(70), 1.5 + float(getRand(5) / 10.0), float(50+getRand(50)));  //Here random values are passed to define age, height and weight
+//	cout << "Rando is " << Rando.dispAge() << " years old." << endl; 
+//	cout << "Rando is " << Rando.dispH() << " meters tall." << endl;
+//	cout << "Rando weighs " << Rando.dispW() << " kilos." << endl << endl;
+//
+//	//Challenges 2 (Create House class with Persons) and 3 (Create Town class with Houses) are left out, since the House class somehow caused memory leaks
+//
+//	_CrtDumpMemoryLeaks(); //Checking for memory leaks
+//
+//	return 0;
+//}
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-//Tutorial 20: 
+//------------------------------------------------------------------------------------------------------------------------------------------------------
+//Tutorial 20: Inheritance basics
+//------------------------------------------------------------------------------------------------------------------------------------------------------
+
+////In C++ classes can be defined and then used as basis for other classes. So for instance an insect class could be defined (6 legs, exoskeleton) and be used as parent class for e.g. the class ladybug
+////If the parent class is changed the children classes are changed automatically as well.
+////This saves a lot of work.
+////Everything that is private in a parent class can't be accessed by the child class
+////There is another keyword that can be used, which is "protected". All protected variables an functions can be accessed externally, but the child classes still inherit the methods
+//
+//#include <iostream>
+//using namespace std;
+//
+//class livingThing              //In this example livingThing is the parent class
+//{
+//public:
+//	livingThing();
+//	livingThing(char, int);    //Constructor is initialized with name and age
+//	char name;                 //can't get it done properly with a string. Name has to be single character :|
+//	int age;
+//};
+//
+//livingThing::livingThing() {
+//
+//}
+//
+//livingThing::livingThing(char n, int a)  //Defintion of constructor
+//{
+//	livingThing::name = n;
+//	livingThing::age = a;
+//}
+//
+//class Animal : public livingThing        //The animal class inherits the functions and variables from the livingThing class and everything that is public in livingThing is also public in Animal
+//{                                        //If instead of the public keyword the private keyword is used all methods from the parent class are inherited as private
+//public:
+//	Animal();
+//	void Move();
+//	using livingThing::livingThing;      //The using command has to be used in order to inherit the constructor as well
+//};
+//
+//Animal::Animal() {
+//
+//}
+//
+//void Animal::Move()
+//{
+//	cout << "The " << Animal::name << " moved." << endl << endl;
+//}
+//
+//class Insect : public Animal
+//{
+//public:
+//	Insect();
+//	int nrLegs = 6;
+//};
+//
+//Insect::Insect() {
+//
+//}
+//
+//int main() {
+//	
+//	Animal frog('f', 5);                 //Constructor of the livingThing class was inherited by the Animal class (using using) and can be used
+//	cout << "The "<<frog.name <<" is " << frog.age << " years old" << endl;
+//	frog.Move();
+//
+//	Insect bee;                          //Constructor has to be inherited directly from the parent class. Don't know if it can be passed on further...
+//	bee.name = 'b';                      //If a default constructor is defined there has to be a default constructor of the parent class as well 
+//	bee.age = 2;
+//	cout << "The " << bee.name << " is " << bee.age << " years old" << endl;
+//	bee.Move();
+//}
+
+//------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------------------------------------------------------------------------------
+//Tutorial 21: Polymorphism
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 
 

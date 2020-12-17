@@ -1,5 +1,2 @@
 ﻿  main.cpp
-C:\Users\Lenovo\source\repos\C_plus_plus_Creel_Tutorials\C_plus_plus_Creel_Tutorials\main.cpp(1140,12): warning C4244: "Argument": Konvertierung von "time_t" in "unsigned int", möglicher Datenverlust
-C:\Users\Lenovo\source\repos\C_plus_plus_Creel_Tutorials\C_plus_plus_Creel_Tutorials\main.cpp(1223,28): warning C4305: "Argument": Verkürzung von "double" in "float"
-C:\Users\Lenovo\source\repos\C_plus_plus_Creel_Tutorials\C_plus_plus_Creel_Tutorials\main.cpp(1228,35): warning C4244: "Argument": Konvertierung von "double" in "float", möglicher Datenverlust
   C_plus_plus_Creel_Tutorials.vcxproj -> C:\Users\Lenovo\source\repos\C_plus_plus_Creel_Tutorials\Debug\C_plus_plus_Creel_Tutorials.exe
