@@ -4,7 +4,7 @@
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 //Taken from :
-// Creel - C++ Tutorial for Beginners 1: Introduction and First Program
+// Creel - C++ Tutorial for Beginners 1: Introduction and First Program (and following parts of the series)
 // (https://www.youtube.com/watch?v=QjiZqdDqKzw&list=PL0C5825724605DB2A&index=1)
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -32,7 +32,7 @@
 * 19 - Constructors & Destructors
 * 20 - Inheritance basics
 
-To run a certain program the "slash star  star slash"-commands have to be removed for the section where they don't surround a comment. 
+To run a certain program the "slash star  star slash"-commands have to be removed for the section in which they don't surround a comment. 
 */
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -40,6 +40,7 @@ To run a certain program the "slash star  star slash"-commands have to be remove
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 //Tutorial 1_1: Hello world
+// (basic structure of a c++ program and first output)
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 /*
 #include <iostream>                   //library in-/outstream that is necessary to use cin and cout
@@ -56,13 +57,14 @@ int main() {                          //main function without any input which is
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 //Tutorial 1_2: Functions, cin, cout
+// (introduction to functions, input and output)
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 /*
 #include <iostream>
 
 using namespace std;
 
-// A function is created that adds two integer numbers a and b and returns their sum
+// A function is created that adds two integer numbers a and b and returns their sum as an integer
 int Summe(int a,int b){
 	cout<<"Summe:"<<endl;
 	int c=a+b;
@@ -97,6 +99,7 @@ return 0;                       //standard "everything went according to plan"-o
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 //Tutorial 2: Test if, else if, else
+// (if, else if and else comments to check conditions and distinguish between cases)
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 /*
 #include <iostream>
@@ -107,22 +110,22 @@ using namespace std;
 
 int main(){
 
-	cout<<"Geben Sie eine Zahl im Bereich von 0 bis 10 ein"<<endl;
+	cout<<"Enter a number from zero to ten"<<endl;
 	int a=0;
 	cin>>a;
 
 if (a <= 5) {                                                   //If condition is met, do...
-	cout << "a ist nicht groesser als 5";
+	cout << "a is not greater than 5";
 	cin.get();
 	return 0;
 }
 else if (a == 10) {                                             //If first condition is not met, but this condition is met, do
-	cout << "a ist maximal gross";
+	cout << "a is at its maximum";
 	cin.get();
 	return 0;
 }
 else {                                                          //If conditions above are not met, do
-	cout << "a ist groesser als 5 aber nicht maximal gross";
+	cout << "a is greater than 5 but not at its maximum";
 	cin.get();
 	return 0;
 }
@@ -138,6 +141,7 @@ else {                                                          //If conditions 
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 //Tutorial 3: Calculator, If, else, if else, and, or
+// (Programming a simple calculator using the methods if, else, if else, and and or)
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 /*
 #include <iostream>
@@ -145,7 +149,7 @@ else {                                                          //If conditions 
 using namespace std;
 
 // Example coded in tutorial 3 (if, else if, else, &&, ||, Conditional Operators)
-// Cute little calculator
+// 'Cute little calculator'
 
 int main(){
 	int a, b, option;                  //Several variables can be declared in the same line
@@ -182,7 +186,7 @@ int main(){
 		}
 	}
 	else{
-		cout<<"That wasn't an option you moron!"<<endl;
+		cout<<"That wasn't an option!"<<endl;
 	}
 
 	cin.get();                        //Acts like the break point in his tutorial. Program ends as soon as another key is pressed
@@ -217,6 +221,7 @@ everything else is seen as True
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 //Tutorial 4: Incrementing and decrementing
+// (Using the increment/decrement operation important for changing indices)
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 /*
 #include <iostream>
@@ -275,6 +280,7 @@ int main() {
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 //Tutorial 5: Control structures
+// (Loops are introduced / while, do while, break, pow(a,b))
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 /*
 #include <iostream>
@@ -314,6 +320,7 @@ int main() { //Task from tutorial: cout the first 6 powers of 7, tasks 1-100 and
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 //Tutorial 6: For loops
+// (For loops are introduced as an alternative to while loops, functions are already used for the example code)
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 /*
 #include <iostream>
@@ -339,6 +346,9 @@ infinite loops (condition=true) can be useful if they are used in combination wi
 */
 
 /*
+
+//Summe_it(a) and Summe_re(a) are examples of functions and displSum() is a procedure all of which will be explained in the next part of the tutorial series
+
 int Summe_it(int a) {                //iterative version (loop, many iterations of a code block) 
 	int summe = 0;
 	for (int i = 1; i <= a; i++) {   //it's possible to put several initializers, conditions and increments in a for-loop
@@ -379,7 +389,7 @@ int main() {
 	}
 	*/
 	/*
-	  //Challenge 1: cout the word cabbage 1000 times
+	  //Challenge 1: cout the word 'cabbage' 1000 times
 	for(int i=0;i<1000;i++){
 		cout<<i+1<<": cabbage  ";
 	}
@@ -403,7 +413,7 @@ int main() {
 
 	/*  //Challenge 3: Print out numbers from 50 to 100 that aren't divisible by 3
 	for(int i=50;i<=100;i++){
-		if(i%3==0){                                                                   //could also have chosen if(i%3!=0)cout<<i<<endl;
+		if(i%3==0){   //could also have chosen if(i%3!=0)cout<<i<<endl;
 			continue; //continue can be used to skip the rest of the loop's body once
 		}
 		else cout<<i<<endl;
@@ -418,6 +428,7 @@ int main() {
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 //Tutorial 7: Functions
+// (Functions and procedures are introduced)
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 /*
 #include <iostream>
@@ -490,6 +501,7 @@ int main() {
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 //Tutorial 8: Switch Statements
+// (Switch statements are introduced, alternative to if/else if/else, can be used for program menus)
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 /*
 #include <iostream>
@@ -551,6 +563,7 @@ int main() {
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 //Tutorial 9: Arrays
+// (Arrays are introduced as a way to store large quantities of variables in an ordered fashion)
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 /*
 #include <iostream>
@@ -564,7 +577,7 @@ array = list of same variable type over and over again
 Syntax:
 DataType Name[NumberOfItems];
 
-if arrays are to be returned by a function pointers have to be used. This can be seen in program splitwise attempt or here:
+if arrays are to be returned by a function pointers have to be used. This can be seen here:
 https://stackoverflow.com/questions/7527356/return-string-array-in-c-function
 
 */
@@ -608,6 +621,7 @@ int main() {
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 //Tutorial 10: Pointers
+// (Pointers are introduced as a way to store information about a variable's storage address)
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 /*
 #include <iostream>
@@ -642,6 +656,7 @@ int main() {
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 //Tutorial 11: Game Programming / Tutorial 12: Headers
+// (A small 'game' is programmed and headers are introduced as an efficient way to group and save functions)
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 /*
 #include <iostream>
@@ -689,6 +704,7 @@ int main() {
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 //Tutorial 13: Passing by reference vs. by pointer
+// (introducing different possibilities to pass variables to functions so that the function can actually change their value)
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 /*
 #include <iostream>
@@ -704,7 +720,7 @@ If a pointer is passed to the function the value at the address the pointer poin
 If a variable is passed by reference the same thing can be done but without any further need for * and & signs
 Moreover several variables can be passed by reference resulting in several variables being 'returned' from the function
 
-The methods are almost interchangeable, but not exactly. Both have the advantages and disadvantages
+The methods are almost interchangeable, but not exactly. Both have their advantages and disadvantages
 */
 /*
 //Pass by pointer
@@ -731,6 +747,7 @@ int main() {
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 //Tutorial 14: 2D Arrays
+// (Introduction to more dimensional arrays, basically like matrices of n dimensions)
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 /*
 #include <iostream>
@@ -777,6 +794,7 @@ int main() {
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 //Tutorial 15: Structures explained (Game Programming)
+// (Structures are introduced as a way to store variables and functions and used within a small game)
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 /*
 #include <iostream>      //Standard in out stream e.g. for cout, cin
@@ -809,7 +827,7 @@ cout<<"Sth"<<endl;
 }
 
 After the structure has been declared an object of that structure can be defined and the variables can be set. If a variable should be set to the same
-value for each object of that structure the value can already be set within the structure declaration. In that case it makes sense to set add "static"
+value for each object of that structure the value can already be set within the structure declaration. In that case it makes sense to add "static"
 before the type of the variable to make sure the variable is only stored once and not copied to all objects of the structure.
 
 structureName object;
@@ -938,6 +956,7 @@ int main() {
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 //Tutorial 16: Classes and objects
+// (Classes and objects in general are introduced as an alternative to structures)
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 /*
 #include<iostream>
@@ -958,7 +977,7 @@ it's private. Members or functions that are private can only be accessed by the 
 This is done to encapsulate certain processes and thus reduce the risk of making mistakes.
 Members of a class can be the usual data types but also structures and other classes.
 It is common to declare member methods within the class definition, but define them outside of the class definition, maybe even in another file.
-If a member function is defined within the class definition that means something else (in-lining it; explained later)
+If a member function is defined within the class definition that means something else (in-lining it)
 
 Syntax of a class:
 
@@ -1037,6 +1056,7 @@ int main() {
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 //Tutorial 17: new and delete, the stack and the heap
+// (The stack and the heap are introduced as locations for storing data in RAM, new and delete are methods for accessing the heap)
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 /*
 #include<iostream>
@@ -1086,6 +1106,7 @@ int main() {
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 //Tutorial 18: Function overloading
+// (Function overloading is introduced as a method to reuse names for functions with different input variables)
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 /*
 #include<iostream>
@@ -1137,7 +1158,8 @@ int main() {
 
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------
-//Tutorial 19: Constructors and Destructors 
+//Tutorial 19: Constructors and Destructors
+// (The constructor and destructor methods of class objects are introduced and explained)
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ///*
@@ -1263,6 +1285,7 @@ int main() {
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 //Tutorial 20: Inheritance basics
+// (Inheritance is introduced as a method to base class objects on other class objects)
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ////In C++ classes can be defined and then used as basis for other classes. So for instance an insect class could be defined (6 legs, exoskeleton) and be used as parent class for e.g. the class ladybug
