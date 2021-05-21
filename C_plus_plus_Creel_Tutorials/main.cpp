@@ -1096,7 +1096,7 @@ int main() {
 	j[7] = 78;
 	j[53] = j[7] + 78;
 	//Return the whole array to the heap
-	delete[] j;                           //Delete[] means that *i is pointing to an array! Brackets are important!!
+	delete[] j;                           //Delete[] means that *j is pointing to an array! Brackets are important!!
 
 	return 0;
 }
