@@ -9,7 +9,7 @@ Table of contents:
 
 * 2 - Test if, else if, else
 
-* 3 - Calculator, If, else, if else, and, or
+* 3 - Calculator, If, else if, else, and, or
 
 * 4 - Incrementing and decrementing
 
